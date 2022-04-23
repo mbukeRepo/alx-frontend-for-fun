@@ -7,6 +7,7 @@ markdown to html
 import sys
 from parse_heading import parse_heading
 from write_to_file import write_to_file
+from parse_lists import parse_ul
 
 
 def main():
@@ -18,9 +19,14 @@ def main():
     try:
         markdown = open(sys.argv[1])
         html = []
+        ul = []
         for line in markdown:
-            html.append(parse_heading(line))
-
+            if line[0] == '#':
+                html.append(parse_heading(line))
+            if line[0] == '-':
+                ul.append(line[2:len(line) - 1])
+        [html.append(tag) for tag in parse_ul(ul)]
+        print(html)
         dest_file = open(sys.argv[2], 'w')
         write_to_file(dest_file, html)
 

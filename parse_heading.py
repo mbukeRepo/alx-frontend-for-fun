@@ -23,3 +23,4 @@ def parse_heading(line):
         return handle_heading(line[6:len(line) - 1], 5)
     if line[:6] == "######" and line[6] == ' ':
         return handle_heading(line[7:len(line) - 1], 6)
+    return
