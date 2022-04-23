@@ -16,10 +16,16 @@ def main():
         exit(1)
     try:
         markdown = open(sys.argv[1])
+        html = []
+        for line in markdown:
+            html.append(parse_heading(line))
+
         dest_file = open(sys.argv[2], 'w')
+        write_to_file(dest_file, html)
+
         dest_file.close()
         markdown.close()
-        exit(0)
+        print("opened and closed markdown successfully")
     except FileNotFoundError:
         print("Missing {}".format(sys.argv[1]), file=sys.stderr)
         exit(1)
