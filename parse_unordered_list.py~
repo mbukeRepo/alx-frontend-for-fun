@@ -1,7 +1,0 @@
-#!/usr/bin/python3
-""" contains implementation for list parsing """
-
-def parse_ol(ol):
-    return "<ul>\n{}\n</ul>".format("\n"
-                                    .join(["<li>{}</li>".
-                                           format(li) for li in ol]))
