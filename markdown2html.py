@@ -12,7 +12,8 @@ from write_to_file import write_to_file
 def main():
     """ main enty point to my program """
     if len(sys.argv) < 3:
-        print("Usage: ./markdown2html.py README.md README.html")
+        print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
+        exit(1)
     try:
         markdown = open(sys.argv[1])
         html = []
