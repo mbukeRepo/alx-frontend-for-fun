@@ -5,9 +5,10 @@ markdown to html
 """
 
 import sys
-from parse_heading import parse_heading
+
+from sympy import li
 from write_to_file import write_to_file
-from parse_lists import parse_ul
+from parser import parser
 
 
 def main():
@@ -18,22 +19,8 @@ def main():
         exit(1)
     try:
         markdown = open(sys.argv[1])
-        html = []
-        ul = []
-        ul_flag = False
-        for line in markdown:
-            if line[0] == '#':
-                html.append(parse_heading(line))
-            if line[0] == '-':
-                ul.append(line[2:len(line) - 1])
-                ul_flag = True
-            else:
-                ul_flag = False
-            if not ul_flag and ul:
-                [html.append(tag) for tag in parse_ul(ul)]
-                ul = []
-        if ul:
-            [html.append(tag) for tag in parse_ul(ul)]
+        html = parser(markdown)
+        
         dest_file = open(sys.argv[2], 'w')
         write_to_file(dest_file, html)
 
