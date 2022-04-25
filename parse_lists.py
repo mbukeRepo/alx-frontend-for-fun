@@ -9,6 +9,7 @@ def parse_ul(ul):
     new_ul.append('</ul>')
     return new_ul
 
+
 def parse_ol(ol):
     """help in parsing ol"""
     new_ol = ['<ol>']

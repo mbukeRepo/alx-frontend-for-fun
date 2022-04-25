@@ -1,8 +1,12 @@
 #!/usr/bin/python3
+""" main parser for our converter"""
 
 from parse_lists import parse_ul, parse_ol
 from parse_heading import parse_heading
+
+
 def parser(markdown):
+    """ main parser for our converter"""
     html = []
     ul = []
     ol = []
@@ -27,7 +31,7 @@ def parser(markdown):
             if not ul_flag and ul:
                 [html.append(tag) for tag in parse_ul(ul)]
                 ul = []
-            
+
             if not ol_flag and ol:
                 [html.append(tag) for tag in parse_ol(ol)]
                 ol = []

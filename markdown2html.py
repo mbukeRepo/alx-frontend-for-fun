@@ -20,7 +20,6 @@ def main():
     try:
         markdown = open(sys.argv[1])
         html = parser(markdown)
-        
         dest_file = open(sys.argv[2], 'w')
         write_to_file(dest_file, html)
 
