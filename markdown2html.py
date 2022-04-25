@@ -20,13 +20,20 @@ def main():
         markdown = open(sys.argv[1])
         html = []
         ul = []
+        ul_flag = False
         for line in markdown:
             if line[0] == '#':
                 html.append(parse_heading(line))
             if line[0] == '-':
                 ul.append(line[2:len(line) - 1])
-        [html.append(tag) for tag in parse_ul(ul)]
-        print(html)
+                ul_flag = True
+            else:
+                ul_flag = False
+            if not ul_flag and ul:
+                [html.append(tag) for tag in parse_ul(ul)]
+                ul = []
+        if ul:
+            [html.append(tag) for tag in parse_ul(ul)]
         dest_file = open(sys.argv[2], 'w')
         write_to_file(dest_file, html)
 
