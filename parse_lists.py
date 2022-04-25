@@ -7,5 +7,4 @@ def parse_ul(ul):
     new_ul = ['<ul>']
     [new_ul.append('<li>{}</li>'.format(li)) for li in ul]
     new_ul.append('</ul>')
-    print(new_ul)
     return new_ul
