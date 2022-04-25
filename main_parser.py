@@ -5,7 +5,7 @@ from parse_lists import parse_ul, parse_ol
 from parse_heading import parse_heading
 
 
-def parser(markdown):
+def main_parser(markdown):
     """ main parser for our converter"""
     html = []
     ul = []

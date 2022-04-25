@@ -6,9 +6,8 @@ markdown to html
 
 import sys
 
-from sympy import li
 from write_to_file import write_to_file
-from parser import parser
+from main_parser import main_parser
 
 
 def main():
@@ -19,7 +18,7 @@ def main():
         exit(1)
     try:
         markdown = open(sys.argv[1])
-        html = parser(markdown)
+        html = main_parser(markdown)
         dest_file = open(sys.argv[2], 'w')
         write_to_file(dest_file, html)
 
