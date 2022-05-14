@@ -883,7 +883,7 @@ textarea:focus {
   font-style: normal;
 }
 
-.form-help {
+.form-group .form-help {
   margin: 0;
   line-height: 1.3;
   letter-spacing: 0.019rem;
