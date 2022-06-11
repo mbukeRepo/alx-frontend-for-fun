@@ -16,7 +16,6 @@ def main_parser(markdown):
     ol_flag = False
     p_flag = False
     for line in markdown:
-            print(line)
             if line[0] == '#':
                 html.append(parse_heading(line))
                 continue
