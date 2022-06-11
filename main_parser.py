@@ -44,17 +44,19 @@ def main_parser(markdown):
                 ol = []
             if line == '\n':
                 if p:
-                    p.append('</p>\n')
+                    p.append('</p>')
+                    html.append("\n".join(p))
+                    p = []
                     p_flag = False
                 continue
             if line != "":
                 if not p_flag:
-                    p.append("<p>\n")
-                    p.append(line)
+                    p.append("<p>")
+                    p.append(line[:-1])
                     p_flag = True
                     continue
                 else:
-                    p.append('<br/>\n')
+                    p.append('<br/>')
                 p_flag = True
                 p.append(line)
     if ul:
@@ -64,6 +66,5 @@ def main_parser(markdown):
     if p_flag:
         p.append("</p>")
     if p:
-        print(p)
         html.append("\n".join(p))
     return html
