@@ -12,7 +12,6 @@
 # My title3
 #### My title4
 ### My title5
-
 guillaume@vagrant:~/$ ./markdown2html.py README.md README.html 
 guillaume@vagrant:~/$ cat README.html 
 &lt;h1&gt;My title&lt;/h1&gt;
@@ -28,7 +27,6 @@ guillaume@vagrant:~/$
 # My title
 - Hello
 - Bye
-
 guillaume@vagrant:~/$ ./markdown2html.py README.md README.html 
 guillaume@vagrant:~/$ cat README.html 
 &lt;h1&gt;My title&lt;/h1&gt;
@@ -66,7 +64,6 @@ Hello
 
 I'm a text
 with 2 lines
-
 guillaume@vagrant:~/$ ./markdown2html.py README.md README.html 
 guillaume@vagrant:~/$ cat README.html 
 &lt;h1&gt;My title&lt;/h1&gt;
