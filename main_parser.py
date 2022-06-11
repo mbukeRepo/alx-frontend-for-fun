@@ -3,6 +3,7 @@
 
 from parse_lists import parse_ul, parse_ol
 from parse_heading import parse_heading
+from parse_p import parse_p
 
 
 def main_parser(markdown):
@@ -10,21 +11,27 @@ def main_parser(markdown):
     html = []
     ul = []
     ol = []
+    p = []
     ul_flag = False
     ol_flag = False
+    p_flag = False
     for line in markdown:
+            print(line)
             if line[0] == '#':
                 html.append(parse_heading(line))
+                continue
 
             if line[0] == '*':
                 ol_flag = True
                 ol.append(line[2:len(line) - 1])
+                continue
             else:
                 ol_flag = False
 
             if line[0] == '-':
                 ul.append(line[2:len(line) - 1])
                 ul_flag = True
+                continue
             else:
                 ul_flag = False
 
@@ -35,9 +42,28 @@ def main_parser(markdown):
             if not ol_flag and ol:
                 [html.append(tag) for tag in parse_ol(ol)]
                 ol = []
+            if line == '\n':
+                if p:
+                    p.append('</p>\n')
+                    p_flag = False
+                continue
+            if line != "":
+                if not p_flag:
+                    p.append("<p>\n")
+                    p.append(line)
+                    p_flag = True
+                    continue
+                else:
+                    p.append('<br/>\n')
+                p_flag = True
+                p.append(line)
     if ul:
         [html.append(tag) for tag in parse_ul(ul)]
     if ol:
         [html.append(tag) for tag in parse_ol(ol)]
-
+    if p_flag:
+        p.append("</p>")
+    if p:
+        print(p)
+        html.append("\n".join(p))
     return html

@@ -1,0 +1,24 @@
+a {
+  text-decoration: none;
+  color: rgb(231, 8, 57);
+  position: relative;
+}
+
+a::before {
+  content: ' ';
+  background-color: rgb(231, 8, 57);
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  display: block;
+  position: absolute;
+  transition: width 0.3s ease-in-out;
+}
+a:hover {
+  background-position: 0;
+}
+
+a:hover::before {
+  width: 100%;
+}
